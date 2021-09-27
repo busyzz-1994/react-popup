@@ -6,7 +6,7 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Thing, { PopupProps } from '../.';
+import ReactPopup, { PopupProps } from '../.';
 
 const App = () => {
   const [v, setV] = React.useState(false);
@@ -19,9 +19,9 @@ const App = () => {
   };
   return (
     <div>
-      <Thing onClose={() => setV(false)} visible={v} position={position}>
+      <ReactPopup onClose={() => setV(false)} visible={v} position={position}>
         <h1>test</h1>
-      </Thing>
+      </ReactPopup>
       <div>
         <button onClick={() => onClick('center')}>center</button>
       </div>

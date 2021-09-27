@@ -18,7 +18,8 @@
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "predeploy": "npm run build && cd example && npm run build -- --public-url https://busyzz-1994.github.io/react-popup"
+    "predeploy": "npm run build && cd example && npm run build -- --public-url https://busyzz-1994.github.io/react-popup",
+    "deploy": "gh-pages -d ./example/dist"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -34,7 +35,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "react-popup",
+  "name": "@busyzz/react-popup",
   "author": "busyzz",
   "module": "dist/react-popup.esm.js",
   "size-limit": [
@@ -49,10 +50,12 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^5.0.4",
+    "@types/gh-pages": "^3.2.0",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
     "autoprefixer": "^10.3.6",
     "cssnano": "^5.0.8",
+    "gh-pages": "^3.2.3",
     "husky": "^7.0.2",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
