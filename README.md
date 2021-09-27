@@ -8,7 +8,7 @@
 
 [https://busyzz-1994.github.io/react-popup/](https://busyzz-1994.github.io/react-popup/)
 
-![](https://busyzz-1994.github.io/react-popup/blob/master/public/demo.gif)
+![](https://github.com/busyzz-1994/react-popup/blob/master/public/demo.gif)
 
 ## 开始
 
