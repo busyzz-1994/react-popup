@@ -1,6 +1,14 @@
+<!--
+ * @Author: busyzz
+ * @Date: 2021-09-27 14:24:08
+ * @Description:
+-->
+
 ## 线上预览
 
 [https://busyzz-1994.github.io/react-popup/](https://busyzz-1994.github.io/react-popup/)
+
+![](https://busyzz-1994.github.io/react-popup/public/demo.gif)
 
 ## 开始
 
