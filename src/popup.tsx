@@ -12,7 +12,7 @@ import './index.scss';
 type Position = 'center' | 'top' | 'left' | 'bottom' | 'right';
 export type PopupProps = {
   visible?: boolean;
-  position: Position;
+  position?: Position;
   mask?: boolean;
   maskClosable?: boolean;
   onClose?: () => void;
@@ -70,7 +70,7 @@ const Popup: FC<PopupProps> = ({
           </CSSTransition>
         )}
         <CSSTransition
-          classNames={`${prefix}-${motionMap[position]}`}
+          classNames={`${prefix}-${motionMap[position as Position]}`}
           timeout={300}
           in={visible}
           appear
