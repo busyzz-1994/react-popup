@@ -4,7 +4,7 @@
  * @Description:
  */
 
-import React, { FC, useRef } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import Portal from './portal';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
@@ -17,6 +17,7 @@ export type PopupProps = {
   maskClosable?: boolean;
   onClose?: () => void;
   wrapClassName?: string;
+  destroyOnClose?: boolean;
 };
 const motionMap: Record<Position, string> = {
   bottom: 'slide-up',
@@ -30,11 +31,14 @@ const Popup: FC<PopupProps> = ({
   position,
   mask,
   maskClosable,
+  destroyOnClose,
   onClose,
   wrapClassName,
   children,
 }) => {
   const prefix = 'busyzz-react-popup';
+  const [, setSign] = useState({});
+  const destroyRef = useRef(false);
   const firstRenderRef = useRef(false);
   if (!visible && !firstRenderRef.current) return null;
   if (!firstRenderRef.current) {
@@ -56,8 +60,17 @@ const Popup: FC<PopupProps> = ({
       onClose?.();
     }
   };
-  return (
-    <Portal>
+  const onExited = () => {
+    if (destroyOnClose) {
+      destroyRef.current = true;
+      setSign({});
+    }
+  };
+  const onPortalDestroy = () => {
+    destroyRef.current = false;
+  };
+  return destroyRef.current ? null : (
+    <Portal onPortalDestroy={onPortalDestroy}>
       <div className={wrapperCls}>
         {mask && (
           <CSSTransition
@@ -74,6 +87,7 @@ const Popup: FC<PopupProps> = ({
           timeout={300}
           in={visible}
           appear
+          onExited={onExited}
         >
           <div className={contentCls}>{children}</div>
         </CSSTransition>

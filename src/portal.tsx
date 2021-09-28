@@ -1,8 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-type PortalProps = React.PropsWithChildren<{}>;
-const Portal = ({ children }: PortalProps) => {
+type PortalProps = React.PropsWithChildren<{
+  onPortalDestroy?: () => void;
+}>;
+const Portal = ({ children, onPortalDestroy }: PortalProps) => {
   const divRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    return () => {
+      onPortalDestroy?.();
+      document.body.removeChild(divRef.current as Node);
+    };
+  }, []);
   if (!divRef.current) {
     const node = document.createElement('div');
     node.className = `busyzz-react-popup__portal`;
